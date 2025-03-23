@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import ibu.edu.ba.myapplication.ui.screens.LoginScreen
+import ibu.edu.ba.myapplication.ui.screens.RegistrationScreen
 import ibu.edu.ba.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
-                LoginScreen()
+                RegistrationScreen()
             }
         }
     }
