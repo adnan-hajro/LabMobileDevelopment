@@ -1,0 +1,27 @@
+package ibu.edu.ba.myapplication.repository
+
+import ibu.edu.ba.myapplication.dao.WorkoutDao
+import ibu.edu.ba.myapplication.model.Workout
+import javax.inject.Inject
+
+class WorkoutRepositoryImpl @Inject constructor(private val workoutDao: WorkoutDao): WorkoutRepository {
+    override suspend fun getWorkoutsByUserId(userId: Int): List<Workout> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getWorkoutsByCategoryId(categoryId: Int): List<Workout> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun insert(entity: Workout) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun update(entity: Workout) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun delete(entity: Workout) {
+        TODO("Not yet implemented")
+    }
+}
