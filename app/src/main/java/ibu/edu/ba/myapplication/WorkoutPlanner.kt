@@ -20,7 +20,8 @@ class WorkoutPlanner: Application() {
 
         CoroutineScope(Dispatchers.IO).launch {
             //Test you can run here
-            //database.userDao().insert(User(id = 1, email = "adnan.hajro@ibu.edu.ba", "SomePassword", "Adnan Hajro"))
+            //dummy query on database just to open the connection
+            database.userDao().getUserById(1)
             Log.d("DatabaseTest", "Database initialized")
         }
     }

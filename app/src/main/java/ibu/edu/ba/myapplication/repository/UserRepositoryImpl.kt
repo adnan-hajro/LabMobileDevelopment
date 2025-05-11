@@ -14,7 +14,7 @@ class UserRepositoryImpl @Inject constructor(private val userDao: UserDao): User
     }
 
     override suspend fun getUserByEmailAndPassword(email: String, password: String): User? {
-        TODO("Not yet implemented")
+        return userDao.getUserByEmailAndPassword(email, password)
     }
 
     override suspend fun delete(entity: User) {

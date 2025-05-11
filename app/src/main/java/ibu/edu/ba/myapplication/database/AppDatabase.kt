@@ -2,6 +2,7 @@ package ibu.edu.ba.myapplication.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverter
 import ibu.edu.ba.myapplication.dao.CategoryDao
 import ibu.edu.ba.myapplication.dao.UserDao
 import ibu.edu.ba.myapplication.dao.WorkoutDao
@@ -11,7 +12,7 @@ import ibu.edu.ba.myapplication.model.Workout
 
 @Database(
     entities = [User::class, Category::class, Workout::class],
-    version = 1,
+    version = 3,
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao

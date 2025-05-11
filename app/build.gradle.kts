@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization") version "2.0.21"
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
@@ -43,7 +44,23 @@ android {
 
 dependencies {
     val room_version = "2.7.1"
+    val nav_version = "2.9.0"
 
+    // Jetpack Compose integration
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // Views/Fragments integration
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-ui:$nav_version")
+
+    // Feature module support for Fragments
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+    // JSON serialization library, works with the Kotlin serialization plugin
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("androidx.room:room-runtime:$room_version")
 
     // If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
@@ -57,6 +74,7 @@ dependencies {
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
     implementation("com.google.dagger:hilt-android:2.56.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     ksp("com.google.dagger:hilt-android-compiler:2.56.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

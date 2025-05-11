@@ -18,20 +18,20 @@ import ibu.edu.ba.myapplication.repository.UserRepository
 import ibu.edu.ba.myapplication.repository.UserRepositoryImpl
 import ibu.edu.ba.myapplication.repository.WorkoutRepository
 import ibu.edu.ba.myapplication.repository.WorkoutRepositoryImpl
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
-
     @Provides
     @Singleton
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room.databaseBuilder(
-            context.applicationContext,
-            AppDatabase::class.java,
-            "smart_workout_planner.db",
-        ).build()
+                context.applicationContext,
+                AppDatabase::class.java,
+                "smart_workout_planner_v2.db",
+            ).fallbackToDestructiveMigration(true).build()
     }
 
     @Provides

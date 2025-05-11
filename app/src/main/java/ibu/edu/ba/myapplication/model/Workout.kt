@@ -27,7 +27,7 @@ data class Workout(
     val intensity: String,
     val status: String,
     val caloriesBurned: Int?,
-    @ColumnInfo(name = "date") val date: Long,
+    val date: Long,
     val categoryId: Int,
     val userId: Int
 )
