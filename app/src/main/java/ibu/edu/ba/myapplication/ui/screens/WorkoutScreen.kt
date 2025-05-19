@@ -37,23 +37,27 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ibu.edu.ba.myapplication.model.User
 import ibu.edu.ba.myapplication.ui.screens.cards.MyWorkoutCard
+import ibu.edu.ba.myapplication.ui.viewmodel.UserViewModel
 import ibu.edu.ba.myapplication.ui.viewmodel.WorkoutViewModel
 
 @Composable
-fun WorkoutScreen(loggedUser: User, workoutViewModel: WorkoutViewModel) {
+fun WorkoutScreen(workoutViewModel: WorkoutViewModel, userViewModel: UserViewModel, loggedUser: User?) {
 //    val workouts by viewModel.workouts.collectAsState()
     val workouts by workoutViewModel.workouts.collectAsState()
 //    val workoutSaved by viewModel.workoutSaved.collectAsState()
-      var showAddWorkout by remember { mutableStateOf(false) }
+    var showAddWorkout by remember { mutableStateOf(false) }
+    //val loggedUser by userViewModel.loggedUser.collectAsState();
+
 //    val user by userViewModel.loggedUser.collectAsState()
 
     var isSingleColumn by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         Log.d("called", "$loggedUser")
-        workoutViewModel.loadWorkouts(loggedUser.id)
+        workoutViewModel.loadWorkouts(loggedUser!!.id)
     }
 
 //    LaunchedEffect(workoutSaved) {

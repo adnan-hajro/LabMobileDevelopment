@@ -1,5 +1,6 @@
 package ibu.edu.ba.myapplication.ui.screens
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -29,6 +30,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,17 +40,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ibu.edu.ba.myapplication.R
 import ibu.edu.ba.myapplication.model.User
 import ibu.edu.ba.myapplication.ui.screens.cards.WorkoutCard
 import ibu.edu.ba.myapplication.ui.screens.navigations.BottomNavigationBar
+import ibu.edu.ba.myapplication.ui.viewmodel.UserViewModel
 import ibu.edu.ba.myapplication.ui.viewmodel.WorkoutViewModel
 import kotlin.math.log
 
 @Composable
-fun HomeScreen(loggedUser: User, workoutViewModel: WorkoutViewModel) {
+fun HomeScreen(workoutViewModel: WorkoutViewModel, userViewModel: UserViewModel) {
     //val workouts by workoutViewModel.workouts.collectAsState()
+    val loggedUser by userViewModel.loggedUser.collectAsState();
 
+    //Log.d("Logged user: ", "${loggedUser2}")
     LaunchedEffect(Unit) {
         //this can be added to show real workouts if exist, but for now I decided to put dummy data
         //workoutViewModel.loadWorkouts(1)
@@ -64,7 +71,7 @@ fun HomeScreen(loggedUser: User, workoutViewModel: WorkoutViewModel) {
             item {
                 Column(modifier = Modifier.fillMaxWidth().padding(20.dp)) {
                     Text(
-                        "Welcome, ${loggedUser.fullName}!",
+                        "Welcome, ${loggedUser?.fullName}!",
                         fontSize = 30.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,

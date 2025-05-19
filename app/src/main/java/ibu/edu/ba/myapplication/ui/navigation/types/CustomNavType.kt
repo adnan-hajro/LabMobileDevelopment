@@ -3,6 +3,7 @@ package ibu.edu.ba.myapplication.ui.navigation.types
 import android.net.Uri
 import androidx.navigation.NavType
 import androidx.savedstate.SavedState
+import ibu.edu.ba.myapplication.model.Category
 import ibu.edu.ba.myapplication.model.User
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -24,6 +25,25 @@ object CustomNavType {
         }
 
         override fun serializeAsValue(value: User): String {
+            return Uri.encode(Json.encodeToString(value))
+        }
+    }
+    val CategoryType = object : NavType<Category>(
+        isNullableAllowed = false
+    ) {
+        override fun put(bundle: SavedState, key: String, value: Category) {
+            TODO("Not yet implemented")
+        }
+
+        override fun get(bundle: SavedState, key: String): Category? {
+            TODO("Not yet implemented")
+        }
+
+        override fun parseValue(value: String): Category {
+            TODO("Not yet implemented")
+        }
+
+        override fun serializeAsValue(value: Category): String {
             return Uri.encode(Json.encodeToString(value))
         }
 

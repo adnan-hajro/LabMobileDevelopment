@@ -43,6 +43,9 @@ android {
 }
 
 dependencies {
+    //implementation(libs.androidx.datastore.preferences.core.jvm)
+    implementation("androidx.datastore:datastore:1.1.6")
+    implementation("androidx.datastore:datastore-preferences:1.1.6")
     val room_version = "2.7.1"
     val nav_version = "2.9.0"
 

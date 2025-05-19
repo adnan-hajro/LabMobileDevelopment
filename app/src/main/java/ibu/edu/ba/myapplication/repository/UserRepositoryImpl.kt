@@ -9,6 +9,11 @@ class UserRepositoryImpl @Inject constructor(private val userDao: UserDao): User
         return userDao.insert(entity)
     }
 
+    override suspend fun getUserById(id: Int): User? {
+        return userDao.getUserById(id)
+    }
+
+
     override suspend fun getUserByEmail(email: String): User? {
         TODO("Not yet implemented")
     }

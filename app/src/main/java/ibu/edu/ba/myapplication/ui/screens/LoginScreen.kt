@@ -42,16 +42,15 @@ import ibu.edu.ba.myapplication.model.User
 import ibu.edu.ba.myapplication.ui.viewmodel.UserViewModel
 
 @Composable
-fun LoginScreen(userViewModel: UserViewModel, onRegisterNav: () -> Unit, onSuccessLogin: (User) -> Unit) {
+fun LoginScreen(userViewModel: UserViewModel, onRegisterNav: () -> Unit, onSuccessLogin: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val loginStatus by userViewModel.loginStatus.collectAsState()
-    val loggedUser by userViewModel.loggedUser.collectAsState()
 
     LaunchedEffect(loginStatus) {
         loginStatus?.let { success ->
             if (success) {
-                onSuccessLogin(loggedUser!!)
+                onSuccessLogin()
             } else {
                 //do something else
             }
@@ -85,6 +84,7 @@ fun LoginScreen(userViewModel: UserViewModel, onRegisterNav: () -> Unit, onSucce
                 colors = TextFieldDefaults.colors(
                     unfocusedContainerColor = Color.Transparent,
                     focusedContainerColor = Color.Transparent,
+                    unfocusedTextColor = Color.White,
                     focusedTextColor = Color.White,
                     focusedIndicatorColor = Color.White
                 )
@@ -101,6 +101,7 @@ fun LoginScreen(userViewModel: UserViewModel, onRegisterNav: () -> Unit, onSucce
                     unfocusedContainerColor = Color.Transparent,
                     focusedContainerColor = Color.Transparent,
                     focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
                 )
             )
 
