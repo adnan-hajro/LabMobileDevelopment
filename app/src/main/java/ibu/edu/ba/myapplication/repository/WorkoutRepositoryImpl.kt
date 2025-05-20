@@ -3,6 +3,7 @@ package ibu.edu.ba.myapplication.repository
 import android.util.Log
 import ibu.edu.ba.myapplication.dao.WorkoutDao
 import ibu.edu.ba.myapplication.model.Workout
+import ibu.edu.ba.myapplication.model.pojo.WorkoutWithCategory
 import javax.inject.Inject
 
 class WorkoutRepositoryImpl @Inject constructor(private val workoutDao: WorkoutDao): WorkoutRepository {
@@ -12,6 +13,10 @@ class WorkoutRepositoryImpl @Inject constructor(private val workoutDao: WorkoutD
 
     override suspend fun getWorkoutsByCategoryId(categoryId: Int): List<Workout> {
         TODO("Not yet implemented")
+    }
+
+    override suspend fun getAllWorkoutsWithCategories(): List<WorkoutWithCategory>? {
+        return workoutDao.getAllWorkoutsWithCategories();
     }
 
     override suspend fun insert(entity: Workout) {

@@ -21,8 +21,13 @@ class WorkoutPlanner: Application() {
         CoroutineScope(Dispatchers.IO).launch {
             //Test you can run here
             //dummy query on database just to open the connection
-            database.userDao().getUserById(1)
-            Log.d("DatabaseTest", "Database initialized")
+            //database.userDao().getUserById(1)
+
+            /**
+             * Testing workout with categories -- works
+             */
+            val workoutWithCategoriesList = database.workoutDao().getAllWorkoutsWithCategories()
+            Log.d("DatabaseTest", "Database initialized, $workoutWithCategoriesList")
         }
     }
 }
